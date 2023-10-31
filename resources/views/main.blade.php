@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    @yield('content')
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+    <div>
+        @if (auth()->check())
+        <p>Logado como <b>{{ auth()->user()->username }}</b></p>
+        <a href="{{ route('login.destroy') }}">Sair</a>
+        @else
+        <a href="{{ route('login.index') }}">Logar</a>
+        <a href="{{ route('register.index') }}">Registrar</a>
+        @endif
+    </div>
+@endsection

@@ -1,7 +1,6 @@
 @extends('main')
 
 @section('content')
-    <a href="{{ route('register.index') }}">Registrar</a>
     <form action="{{ route('login.store') }}" method='POST'>
         @csrf
         @if ($errors->any())
@@ -11,9 +10,10 @@
                 </div>
             @endforeach
         @endif
+        <label for="username">Nome de Usuário</label><br>
         <input type='text' name='username' id='username' value={{ old('username') }}><br>
-        <input type='password' name='password' id='password'><br>
-
-        <input type='submit' value='logar'>
+        <label for="password">Senha</label><br>
+        <input type='password' name='password' id='password'><br><br>
+        <input type='submit' value='Logar'>
     </form>
 @endsection
