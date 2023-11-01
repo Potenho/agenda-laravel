@@ -3,11 +3,7 @@
 @section('content')
     <form action="{{ route('register.save') }}" method='POST'>
         @csrf
-        @if ($errors->any())
-            <div>
-                <span>{{ $message }}</span>
-            </div>
-        @endif
+        @include('partials/for-errors')
         <label for="username">Nome de Usuário</label><br>
         <input type='text' name='username' id='username' value={{ old('username') }}><br>
         <label for="password">Senha</label><br>
