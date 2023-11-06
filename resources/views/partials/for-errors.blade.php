@@ -1,10 +1,12 @@
 @foreach ($errors->all() as $error)
-    <div>
-        <span>* {{ $error }}</span>
+    <div class=' w-60 bg-[#eb6464] text-[#FFFFFF] p-1 rounded-md m-2 italic shadow-md'>
+        <span><b>*</b> {{ $error }}</span>
     </div>
 @endforeach
-@if (!$errors->all())
-<div class='invisible'>
-    <span>* O nome de usuário precisa ser preenchido!</span>
-</div>
+@if (session('success'))
+    <div class=' w-60 bg-[#76d795] text-[#FFFFFF] p-1 rounded-md m-2 italic shadow-md'>
+        <span><b>*</b> {{ session('success') }}</span>
+    </div>
+@else
+    <div class=' w-60 bg-[#d77676] text-[#FFFFFF] invisible p-1 rounded-md m-2 italic'></div>
 @endif

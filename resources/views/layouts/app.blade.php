@@ -11,14 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
-<body class='bg-no-repeat bg-gradient-to-t from-[#7aad8c] to-[#ffccc3] min-h-screen'>
-    <header class='bg-[#FFFFFF] text-[#000000] shadow-[#ee8e8071] shadow-xl'>
+<body class='bg-no-repeat bg-gradient-to-t from-[#ffe5e0] to-[#f1dcff] min-h-screen'>
+    <header class='bg-[#FFFFFF] text-[#000000] shadow-[#b6a2FFFF] shadow-2xl'>
         <nav class='flex justify-between items-center w-[92%] mx-auto'>
             <div>
                 <a href='/' class='flex md:flex-row flex-col mx-auto items-center'>
                     <p class=' font-[Roboto+Condensed] text-[#c97c77] max-[770px]:hidden'><b>Tarefas e Agenda</b></p>
-                    <img class='w-16' width="64" height="64" src="https://img.icons8.com/nolan/64/agenda.png"
-                        alt="agenda" />
+                    @include('partials/logo-icon')
                 </a>
             </div>
             <div class=''>
@@ -32,7 +31,8 @@
                         </li>
                     @else
                         <li>
-                            <a class='hover:text-[#AAAAAA] invisible' href="{{ route('login.index') }}">Minha Agenda e Tarefas</a>
+                            <a class='hover:text-[#AAAAAA] invisible' href="{{ route('login.index') }}">Minha Agenda e
+                                Tarefas</a>
                         </li>
                         <li>
                             <a class='hover:text-[#AAAAAA] invisible' href="{{ route('login.index') }}">Calendario</a>
@@ -52,7 +52,8 @@
                             class='text-[#c97c77] px-5 py-2 rounded-full hover:text-[#92c574] transition-all'>
                             Entre em sua conta</a>
                     @else
-                        <a href="{{ route('login.index') }}" class=' text-[#d0d0d0] px-5 py-2 rounded-full transition-all'>
+                        <a href="{{ route('login.index') }}"
+                            class=' text-[#d0d0d0] px-5 py-2 rounded-full transition-all'>
                             Entre em sua conta</a>
                     @endif
                     @if (request()->route()->getName() != 'register.index')

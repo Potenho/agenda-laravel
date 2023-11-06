@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
+use App\Models\ToDo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +21,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::create([
+            'username' => 'UsuarioTeste',
+            'password' => password_hash('12345678', PASSWORD_DEFAULT),
+        ]);
+
+        ToDo::create([
+            'title' => 'teste',
+            'description' => 'teste',
+            'user_id' => 1,
+        ]);
+
+
+
     }
 }
