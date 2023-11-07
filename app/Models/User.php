@@ -17,6 +17,11 @@ class User extends Authenticatable
         return $this->hasMany(ToDo::class);
     }
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
