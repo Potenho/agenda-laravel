@@ -15,6 +15,6 @@ class ToDoController extends Controller
         
         $toDos = $user->toDos;
 
-        return view('partials/todos');
+        return view('pages.todos');
     }
 }

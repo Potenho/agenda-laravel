@@ -11,12 +11,12 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('partials/login-form');
+        return view('pages.login-form');
     }
 
     public function register()
     {
-        return view('partials/register-form');
+        return view('pages.register-form');
     }
 
     public function save(Request $request)

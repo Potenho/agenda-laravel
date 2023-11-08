@@ -10,15 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-
-<body class='bg-no-repeat bg-gradient-to-t from-[#ffe5e0] to-[#f1dcff] min-h-screen'>
-    <header class='bg-white shadow-[#fbac8daf] shadow-2xl whitespace-nowrap'>
+<!--<body class='bg-no-repeat bg-gradient-to-t from-[#ffe5e0] to-[#f1dcff] min-h-screen'> -->
+<body class='bg-[#FFEED9]'>
+    <header class='bg-white shadow-[#fbac8d78] shadow-2xl whitespace-nowrap'>
         <nav class='flex justify-between mx-auto w-[92%]'>
             <!-- Logo -->
             <div class=' text-[#eb9183] flex'>
                 <a href='/' class='flex items-center'>
-                    <p class='hidden md:flex'><b>Tarefas e Agenda</b></p>
-                    @include('partials/logo-icon')
+                    @include('pages.partials.logo-icon')
                 </a>
             </div>
             <!-- Menu -->

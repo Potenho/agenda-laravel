@@ -27,12 +27,6 @@ class DatabaseSeeder extends Seeder
             'password' => password_hash('12345678', PASSWORD_DEFAULT),
         ]);
 
-        ToDo::create([
-            'title' => 'teste',
-            'description' => 'teste',
-            'user_id' => 1,
-        ]);
-
 
 
     }

@@ -12,15 +12,16 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable
 {
 
-    public function toDos()
+    public function posts()
     {
         return $this->hasMany(ToDo::class);
     }
 
-    public function events()
+    public function likes()
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Like::class);
     }
+
 
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -32,6 +33,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'pfp',
     ];
 
     /**

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class AgendaController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        return view('partials/home');
+        
+
+        return view('pages.home');
     }
 }

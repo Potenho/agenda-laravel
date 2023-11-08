@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('to_dos', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('title');
-            $table->string('description')->nullable();
-            $table->boolean('is_completed')->default(false);
+            $table->string('name');
+            $table->string('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,5 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('to_dos');
-    }};
+        Schema::dropIfExists('categories');
+    }
+};

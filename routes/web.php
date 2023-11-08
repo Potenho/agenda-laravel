@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ToDoController;
 
@@ -16,7 +16,7 @@ use App\Http\Controllers\ToDoController;
 |
 */
 
-Route::get('/', [AgendaController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(LoginController::class)->group(function() {
     Route::get('/register', 'register')->name('register.index');
