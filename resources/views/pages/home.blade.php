@@ -7,10 +7,11 @@
         @else
             <h1 class='text-[40px]'>Bem-vindo!</h1><br>
         @endif
-        <p>Este é um trabalho feito por <b>Renato Gross</b>, <b>Vinícios Isael</b> e <b>Guilherme Minutti</b> para a disciplina de
-            Desenvolvimento de Sistemas Web. Criado usando <b>Laravel 10</b> e <b>Tailwind CSS</b>, o sistema é um simples organizador
-            de tarefas e eventos para o usuário.</p><br>
+        <p>Este é um trabalho feito por <b>Renato Gross</b>, <b>Vinícios Isael</b> e <b>Guilherme Minutti</b> para a
+            disciplina de
+            Desenvolvimento de Sistemas Web. Criado usando <b>Laravel 10</b> e <b>Tailwind CSS</b>, o sistema é uma simples
+            rede social de comunidades.</p><br>
 
-            <a class='text-[#ff9892] hover:underline' href="https://github.com/Potenho/agenda-laravel">Pagina do Github</a>
+        <a class='text-[#87C4FF] hover:underline' href="https://github.com/Potenho/agenda-laravel">Pagina do Github</a>
     </div>
 @endsection

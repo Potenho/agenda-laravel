@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('backgroundColor')->nullable();
+            $table->string('pfpColor')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

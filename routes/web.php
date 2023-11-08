@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ToDoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,6 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/logout', 'destroy')->name('login.destroy');
 });
 
-Route::controller(ToDoController::class)->group(function() {
-    Route::get('/tarefas', 'index')->name('todos.index');
+Route::controller(CategoryController::class)->group(function() {
+    Route::get('/categories', 'index')->middleware('auth')->name('categories.index');
 });

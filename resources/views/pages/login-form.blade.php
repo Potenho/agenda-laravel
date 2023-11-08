@@ -2,11 +2,11 @@
 
 @section('content')
     <div class='flex items-center  mx-0 px-0 justify-center my-[9%] w-screen '>
-        <div class='bg-[#905569] flex  py-10 rounded-2xl shadow-[#98658aaa] shadow-md'>
+        <div class='bg-[#87C4FF] flex  py-10 rounded-2xl shadow-[#98658aaa] shadow-md'>
             <div class='flex flex-col'>
                 <div class='pl-10 text-white bg-[#c4845010] bg-clip-content text-[13px]'>
                     Não possui uma conta?
-                    <a class='text-[#ff9892] hover:underline' href="{{ route('register.index') }}"> Crie uma conta agora.</a>
+                    <a class='text-[#ffffff] hover:underline' href="{{ route('register.index') }}"> <b> Crie uma conta agora. </b></a>
                 </div>
                 <div class='p-10'>
                     <form action="{{ route('login.store') }}" method='POST'>
