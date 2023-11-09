@@ -27,5 +27,6 @@ Route::controller(LoginController::class)->group(function() {
 });
 
 Route::controller(CategoryController::class)->group(function() {
-    Route::get('/categories', 'index')->middleware('auth')->name('categories.index');
+    Route::get('/category', 'index')->middleware('auth')->name('category.index');
+    Route::get('/category/{id}', 'specific')->middleware('auth')->name('category.specific');
 });

@@ -13,4 +13,11 @@ class CategoryController extends Controller
 
         return view('pages.categories', ['categories' => $categories]);
     }
+
+    public function specific(int $id)
+    {
+        $category = Category::find($id);
+
+        return view('pages.visit-category', ['category' => $category]);
+    }
 }
