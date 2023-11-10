@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -29,4 +30,9 @@ Route::controller(LoginController::class)->group(function() {
 Route::controller(CategoryController::class)->group(function() {
     Route::get('/category', 'index')->middleware('auth')->name('category.index');
     Route::get('/category/{id}', 'specific')->middleware('auth')->name('category.specific');
+});
+
+Route::controller(PostController::class)->group(function() {
+    Route::post('/like-button', 'likeButton')->middleware('auth')->name('like-button');
+
 });

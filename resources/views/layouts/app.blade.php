@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-social-16.png">
     <link rel="icon" href="{{ asset('favicon.png') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <!--<body class='bg-no-repeat bg-gradient-to-t from-[#ffe5e0] to-[#f1dcff] min-h-screen'> -->
 

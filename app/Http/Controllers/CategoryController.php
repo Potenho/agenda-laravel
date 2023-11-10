@@ -18,6 +18,6 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('pages.visit-category', ['category' => $category]);
+        return view('pages.posts-category', ['category' => $category]);
     }
 }
