@@ -15,7 +15,7 @@
                 <a class='h-48' href="{{ route('category.specific', $category['id']) }}">
                     <div
                         class='flex {{ $category['backgroundColor'] ? 'bg-[#' . $category['backgroundColor'] . ']' : 'bg-green-700' }} rounded-t-[10px] items-center'>
-                        <img class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full relative top-5 left-2 border-4 border-[#ffffff]'
+                        <img loading="lazy" class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full relative top-5 left-2 border-4 border-[#ffffff]'
                             width="64" height="64" src="{{ asset($category['image']) }}" alt="">
                         <div class='text-[20px] text-white mx-4'>{{ $category['name'] }}</div>
                     </div>

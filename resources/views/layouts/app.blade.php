@@ -39,7 +39,7 @@
                 @if (auth()->check())
                     <a href="#" class='flex items-center space-x-2'>
                         <p>Logado | <b>{{ auth()->user()->username }}</b></p>
-                        <img class='{{ 'bg-[#' . auth()->user()->pfpColor . ']' }} rounded-full relative border-4 border-[#ffffff]'
+                        <img loading="lazy" class='{{ 'bg-[#' . auth()->user()->pfpColor . ']' }} rounded-full relative border-4 border-[#ffffff]'
                             width="50" height="50" src="{{ asset(auth()->user()->pfp) }}" alt="">
                     </a>
                     <a href="{{ route('login.destroy') }}"class='bg-[#87C4FF] text-[#ffffff] hover:bg-[#39A7FF] rounded-2xl px-3 py-2 transition-colors'>Sair</a>

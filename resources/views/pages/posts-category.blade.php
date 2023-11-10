@@ -6,7 +6,7 @@
         <div class='shadow-md rounded-[10px] w-[80%] m-auto my-6 h-fit'>
             <div
                 class='flex {{ $category['backgroundColor'] ? 'bg-[#' . $category['backgroundColor'] . ']' : 'bg-green-700' }} rounded-t-[10px] items-center p-1'>
-                <img class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full relative top-5 left-2 border-4 border-[#ffffff]'
+                <img loading="lazy" class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full relative top-5 left-2 border-4 border-[#ffffff]'
                     width="64" height="64" src="{{ asset($category['image']) }}" alt="">
                 <div class='text-[20px] text-white mx-4'>{{ $category['name'] }}</div>
             </div>
@@ -22,7 +22,7 @@
                 @foreach ($category->posts as $post)
                     <div class='flex bg-red-600 gap-2 border-t-2 border-b-2'>
                         <div>
-                            <img class='{{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
+                            <img loading="lazy" class='{{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
                                 width="60" height="60" src="{{ asset($post->user['pfp']) }}" alt="">
                         </div>
                         <div class='flex flex-col'>
@@ -37,7 +37,7 @@
                             </div>
                             @if ($post['image'] != null)
                                 <div>
-                                    <img class='rounded-[10px]' width="400" height="300"
+                                    <img loading="lazy" class='rounded-[10px]' width="400" height="300"
                                         src="{{ asset($post['image']) }}" alt="">
                                 </div>
                             @endif
