@@ -18,6 +18,11 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
+        if (!$category)
+        {
+            return redirect()->route('category.index');
+        }
+
         return view('pages.posts-category', ['category' => $category]);
     }
 }

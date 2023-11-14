@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdn.tailwindcss.com'></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    :root {
+        --clr-header: rgb(39, 133, 176);
+        --clr-text-header: #FFFFFF;
+        --clr-shadow: #00000020;
+        --clr-body: #FFFFFF;
+        --clr-a-body: var(--clr-header);
+        --clr-window: rgb(255, 255, 255);
+    }
+</style>
+
+<body class='bg-[var(--clr-body)] flex flex-col gap-9'>
+
+
+    <header class="bg-[var(--clr-header)] flex shadow-[var(--clr-shadow)] shadow-lg text-[18px]">
+        <nav class="flex justify-between w-[92%] p-2 m-auto items-center">
+            <div class="w-fit flex">
+                <img class="invert brightness-0" width="80px" height="80px"
+                    src="https://faculdade.uneouro.edu.br/wp-content/uploads/2019/03/cropped-fav-1-1.png" alt="">
+            </div>
+            <div class="text-[var(--clr-text-header)]">
+                Área do Professor
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="text-[var(--clr-text-header)]">Logado | Professor(a) <b>Andréia Marta</b></div>
+                <a href="#"><ion-icon class="text-[var(--clr-text-header)] text-[30px] p-2 rounded-[5px] bg-[#60aade]" name="menu"></ion-icon></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="text-[var(--clr-a-body)] p-2 px-9 text-[20px]">
+        <a href="#">Área do Professor</a>
+        <ion-icon class="text-black" name="arrow-round-forward"></ion-icon>
+        <a href="#">Suas Turmas</a>
+        <ion-icon class="text-black" name="arrow-round-forward"></ion-icon>
+        <a class='text-black' href="#">Turma 11020-2</a>
+    </div>
+    <div
+        class="flex flex-col w-[92%]  md:w-[72%] transition-all p-4 m-4 mx-auto bg-[var(--clr-window)] rounded-[10px] min-h-[300px] shadow-[#0000003b] shadow-md border-2 border-[#729ebcb6]">
+        <div>
+            <div><b>Turma: </b> 11020-2</div>
+            <div><b>Disciplina: </b> (18080) Matemática 1</div>
+            <div><b>Horário: </b>Seg. às 08:00</div>
+        </div>
+        <br>
+        <div>Por favor selecione a avalição:</div>
+        <div class="">
+            <select class="border-2 w-[200px] border-gray-400">
+                <option value="P1">Prova 1</option>
+                <option value="P1">Prova 2</option>
+                <option value="P1">Trabalho 1</option>
+                <option value="P1">Trabalho 2</option>
+            </select>
+        </div>
+        <div class="text-gray-400 text-[15px] italic" ><br>*Digite a nota da avaliação nos espaços em branco<br></div>
+        <div>
+            <table class="w-full text-left">
+                <tr class="bg-[var(--clr-header)] rounded-[20px] text-white">
+                    <th class="">Nome</th>
+                    <th>RA</th>
+                    <th>Nota</th>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Eduarda Paes</td>
+                    <td>19284918</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value='9'></td>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Eduardo Mateus</td>
+                    <td>13123291</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value='5'></td>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Fernanda Laurenti</td>
+                    <td>14983954</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value='7'></td>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Guilherme Minutti</td>
+                    <td>4201016</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value=''></td>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Renato Gross</td>
+                    <td>4200966</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value=''></td>
+                </tr>
+                <tr class="border-gray-300 border-t-2">
+                    <td>Vinícios Isael</td>
+                    <td>4200980</td>
+                    <td><input class="border-2 border-gray-400 text-center" type="number" min="0" max="10" value=''></td>
+                </tr>
+
+            </table>
+            <br>
+            <button class="bg-[var(--clr-header)] text-white p-2 rounded-[5px]">Salvar</button>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
