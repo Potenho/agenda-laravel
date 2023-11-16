@@ -18,7 +18,7 @@
 
 <body class='bg-no-repeat bg-gradient-to-t  to-[#ffe5e0] from-[#ffdcf5] min-h-screen'>
     <header
-        class='bg-gradient-to-t  from-[#fff1ef] to-[#ffffff] shadow-md whitespace-nowrap fixed left-0 right-0 top-0'>
+        class='bg-gradient-to-t  from-[#fff1ef] to-[#ffffff] shadow-md whitespace-nowrap fixed left-0 right-0 top-0 z-30'>
         <nav class='flex justify-between mx-auto w-[92%]'>
             <!-- Logo -->
             <div class=' text-[#87C4FF] flex p-2'>
@@ -39,14 +39,13 @@
             <!-- Login -->
             <div class=' hidden md:flex items-center space-x-10'>
                 @if (auth()->check())
-                    <a href="#" class='flex items-center space-x-2'>
+                    <a href="{{ route('config.index') }}" class='flex items-center space-x-2'>
                         <p>Logado | <b>{{ auth()->user()->username }}</b></p>
-                        <img
-                            class='{{ 'bg-[#' . auth()->user()->pfpColor . ']' }} rounded-full relative border-4 border-[#ffffff]'
+                        <img class='{{ 'bg-[#' . auth()->user()->pfpColor . ']' }} rounded-full relative border-4 border-[#ffffff]'
                             width="50" height="50" src="{{ asset(auth()->user()->pfp) }}" alt="">
                     </a>
                     <a
-                        href="{{ route('login.destroy') }}"class='bg-[#87C4FF] text-[#ffffff] hover:bg-[#39A7FF] rounded-2xl px-3 py-2 transition-colors'>Sair</a>
+                        href="{{ route('login.destroy') }}"class='bg-[var(--clr-a-button)] text-[var(--clr-a-button-text)] hover:bg-[var(--clr-a-button-hover)] rounded-2xl px-3 py-2 transition-colors w-fit'>Sair</a>
                 @else
                     <a href="{{ route('login.index') }}"
                         class='{{ request()->route()->getName() != 'login.index'? 'text-[#87C4FF] hover:text-[#AAAAAA]': 'text-[#AAAAAA]' }}'>

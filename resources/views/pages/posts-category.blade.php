@@ -2,41 +2,46 @@
 
 @section('content')
     <div class=''>
-        <a class='bg-white h-2' href="{{ route('category.index') }}">Voltar</a>
         <div class='shadow-md rounded-[10px] w-[80%] m-auto my-6 h-fit'>
             <div
                 class='flex {{ $category['backgroundColor'] ? 'bg-[#' . $category['backgroundColor'] . ']' : 'bg-green-700' }} rounded-t-[10px] items-center p-1'>
                 <img loading="lazy"
-                    class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full relative top-5 left-2 border-4 border-[#ffffff]'
+                    class='{{ $category['pfpColor'] ? 'bg-[#' . $category['pfpColor'] . ']' : 'bg-blue-950' }} relative rounded-full top-5 left-2 border-4 border-[#ffffff]'
                     width="64" height="64" src="{{ asset($category['image']) }}" alt="">
                 <div class='text-[20px] text-white mx-4'>{{ $category['name'] }}</div>
             </div>
             <div class='bg-white flex flex-col rounded-[10px] p-5 rounded-t-[0px] gap-y-2'>
                 <div>{{ $category['description'] }}</div>
                 @if ($category->posts->count() == 0)
-                    <div class='text-[12px] text-gray-400 border-t-2 py-2'>Há nenhuma postagem.</div>
+                    <div class='text-[12px] text-gray-400 border-t-2 py-2'>Há nenhuma postagem. Seja o primeiro a postar.
+                    </div>
                 @else
                     <div class='text-[12px] text-gray-400 border-t-2 py-2'>Ultima postagem em:
-                        {{ $category->posts[0]['created_at'] }}</div>
+                        {{ $category->posts->last()['created_at'] }}</div>
                 @endif
+                @include('pages.partials.create-post')
 
-                @foreach ($category->posts as $post)
+                @foreach ($category->posts->sortByDesc('created_at') as $post)
+                    @if ($post->post_id != null)
+                        @continue
+                    @endif
                     <a class='' href="#">
-                        <div class='flex pt-2 gap-2 border-t-2 border-b-2'>
-                            <div>
+                        <div class='flex pt-2 gap-2 border-t-2'>
+                            <div class='flex'>
                                 <img loading="lazy"
-                                    class='w-20 h-13 {{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
-                                    src="{{ asset($post->user['pfp']) }}" alt="">
+                                    class='flex-shrink-0 sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full {{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
+                                    width='45px' height='45px' src="{{ asset($post->user['pfp']) }}" alt="">
                             </div>
                             <div class='flex flex-col'>
                                 <div class='flex gap-2'>
                                     <b>{{ $post->user['username'] }}</b>
                                     <div class='text-gray-400'>{{ $post['created_at'] }}</div>
                                 </div>
-                                <div class='w-[60%] pb-2 mr-auto'>
-                                    {{ $post['message'] }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                                    ducimus provident ratione nisi sunt ea maxime itaque. In quod provident reiciendis sunt
-                                    reprehenderit illum, iste laboriosam ex quidem sit neque?
+                                
+                                <div class='w-[100%] pb-2 mr-auto break-words flex-grow max-w-[100vh]'>
+    
+                                        {!! nl2br($post['message']) !!}
+                                    
                                 </div>
                                 @if ($post['image'] != null)
                                     <div>
@@ -44,7 +49,7 @@
                                             src="{{ asset($post['image']) }}" alt="">
                                     </div>
                                 @endif
-                                <div class='flex gap-4'>
+                                <div class='flex pr-4 '>
 
                                     <a class='w-fit flex items-center rounded-full p-2 m-1 hover:bg-green-700 transition-colors'
                                         href="">@include('pages.svg-icons.comments')
@@ -53,24 +58,17 @@
 
                                     <button
                                         class='w-fit flex items-center rounded-full p-2 m-1 transition-colors like-button hover:bg-[var(--clr-like-hover)] {{ $post->isAuthUserLikedPost() ? 'bg-[var(--clr-like-liked)] unliked' : 'bg-[var(--clr-like-unliked)] liked' }} '
-                                        data-post-id="{{ $post['id'] }}">@include('pages.svg-icons.likes')
-                                        <p class='like-count'>{{ $post->likes->count() }}</p> </button>
-
-
-                                    <!--  <form action="{{ route('like-button') }}" method='POST'>
-                                                @csrf
-                                                <input type="number", name="postId" id="postId">
-                                                <input type="text" value='unlike' name="action" id="action">
-                                                <input type="submit" value="enviar">
-                                            </form> -->
-
-
+                                        data-post-id="{{ $post->id }}">@include('pages.svg-icons.likes')
+                                        <p class='like-count' data-post-id="{{ $post->id }}">
+                                            {{ $post->likes->count() }}</p>
+                                    </button>
                                 </div>
 
                             </div>
                         </div>
                     </a>
                 @endforeach
+                <div class='border-b-2'></div>
 
             </div>
         </div>
@@ -92,7 +90,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/like-button',
+                    url: '/post/like-button',
                     data: {
                         'postId': postId,
                         'action': isLiked ? 'like' : 'unlike',
@@ -111,7 +109,7 @@
                         }
                         if (response.success) {
 
-                            updateLikesCount(response.likesCount)
+                            updateLikesCount(response.likesCount, postId)
 
                             if (isLiked) {
                                 likeButton.addClass(classLikeLiked);
@@ -128,6 +126,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
+                        likeButton.removeClass(classLikeRequest);
                         console.log(1);
                         // Lógica para lidar com erros na requisição AJAX
                         console.error('Erro na requisição AJAX:', status, error, isLiked ? 'unlike' :
@@ -137,9 +136,10 @@
                 });
             }
 
-            function updateLikesCount(likesCount) {
+            function updateLikesCount(likesCount, postId) {
                 // Atualizar a interface do usuário para refletir o novo contador de likes
-                $('.like-count').text(likesCount);
+                console.log(postId);
+                $('.like-count[data-post-id=' + postId + ']').text(likesCount);
             }
 
             $('.like-button').click(function() {

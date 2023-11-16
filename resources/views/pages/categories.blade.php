@@ -24,7 +24,7 @@
                         @if ($category->posts->count() == 0)
                             <div class='text-[12px] text-gray-400'>Há nenhuma postagem.</div>
                         @else
-                            <div class='text-[12px] text-gray-400'>Ultima postagem em: {{ $category->posts[0]['created_at'] }}</div>
+                            <div class='text-[12px] text-gray-400'>Ultima postagem em: {{ $category->posts->last()['created_at'] }}</div>
                         @endif
                     </div>
                 </a>

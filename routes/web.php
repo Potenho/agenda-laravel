@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -27,12 +28,20 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/logout', 'destroy')->name('login.destroy');
 });
 
+Route::controller(ConfigController::class)->group(function(){
+    Route::get('/config', 'index')->middleware('auth')->name('config.index');
+    Route::get('/config-change', 'indexChange')->middleware('auth')->name('config.indexChange');
+    Route::post('/config-save', 'store')->middleware('auth')->name('config.store');
+    Route::delete('/config-delete', 'delete')->middleware('auth')->name('config.delete');
+});
+
 Route::controller(CategoryController::class)->group(function() {
     Route::get('/category', 'index')->middleware('auth')->name('category.index');
     Route::get('/category/{id}', 'specific')->middleware('auth')->name('category.specific');
 });
 
 Route::controller(PostController::class)->group(function() {
-    Route::post('/like-button', 'likeButton')->middleware('auth')->name('like-button');
+    Route::post('/post/like-button', 'likeButton')->middleware('auth')->name('post.like-button');
+    Route::post('/create-post', 'store')->middleware('auth')->name('post.store');
 
 });

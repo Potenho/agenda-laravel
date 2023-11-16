@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('post_id')->nullable()->constrained();
-            $table->string('message')->nullable();
+            $table->string('message', 600)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

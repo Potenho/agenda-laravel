@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
@@ -10,6 +11,40 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'category_id' => 'numeric|required',
+            'message' => 'required_without:image',
+            'image' => 'required_without:message|image|mimes:jpeg,png,jpg,gif|nullable|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $post = Post::create([
+            'user_id' => Auth()->user()->id,
+            'category_id' => $request['category_id'],
+            'message' => $request['message'],
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+
+            $nameImage = time() . '.' . $image->getClientOriginalExtension();
+            
+            $image->move(public_path('images'), $nameImage);
+
+            $post->update([
+                'image' => config('images.images_path').$nameImage,
+            ]);
+
+
+        }
+
+        return redirect()->route('category.specific', $request['category_id']);
+    }
+
     public function likeButton(Request $request)
     {
 

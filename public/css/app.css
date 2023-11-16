@@ -3,4 +3,8 @@
     --clr-like-unliked: #FFFFFF;
     --clr-like-hover: rgb(255, 179, 201);
     --clr-like-request: rgb(144, 144, 144);
+
+    --clr-a-button: #87C4FF;
+    --clr-a-button-text: #ffffff;
+    --clr-a-button-hover: #39A7FF;
 }
