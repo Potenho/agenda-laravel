@@ -1,8 +1,12 @@
 :root {
     --clr-like-liked: rgb(255, 80, 130);
-    --clr-like-unliked: #FFFFFF;
+    --clr-like-unliked: #FFFFFF00;
     --clr-like-hover: rgb(255, 179, 201);
     --clr-like-request: rgb(144, 144, 144);
+
+    --clr-comments: #ffffff00;
+    --clr-comments-hover: #48d99c;
+    --clr-comments-request: rgb(144, 144, 144);
 
     --clr-a-button: #87C4FF;
     --clr-a-button-text: #ffffff;
