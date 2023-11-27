@@ -17,6 +17,7 @@ class PostController extends Controller
 
         $request->validate([
             'category_id' => 'numeric|required',
+            'post_id' => 'numeric|nullable',
             'message' => 'required_without:image',
             'image' => 'required_without:message|image|mimes:jpeg,png,jpg,gif|nullable|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -25,6 +26,7 @@ class PostController extends Controller
             'user_id' => Auth()->user()->id,
             'category_id' => $request['category_id'],
             'message' => $request['message'],
+            'post_id' => $request['post_id'],
         ]);
 
         if ($request->hasFile('image')) {

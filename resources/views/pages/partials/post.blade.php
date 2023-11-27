@@ -1,17 +1,17 @@
-<a class='' href="#">
+<a class='' href="{{ route('category.specific', ['id' => $category['id'], 'post_id' => $post->id]) }}">
     <div class='flex pt-2 gap-2 border-t-2'>
         <div class='flex'>
             <img loading="lazy"
-                class='flex-shrink-0 sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full {{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
+                class='flex-shrink-0 max-h-[45px] max-w-[45px] {{ $post->user['pfpColor'] ? 'bg-[#' . $post->user['pfpColor'] . ']' : 'bg-blue-950' }} rounded-full'
                 width='45px' height='45px' src="{{ asset($post->user['pfp']) }}" alt="">
         </div>
-        <div class='flex flex-col'>
+        <div class='flex flex-col w-full'>
             <div class='flex gap-2'>
                 <b>{{ $post->user['username'] }}</b>
                 <div class='text-gray-400'>{{ $post['created_at'] }}</div>
             </div>
 
-            <div class='w-[100%] pb-2 mr-auto break-words flex-grow max-w-[100vh]'>
+            <div class='w-[60%] pb-2 mr-auto break-words flex-grow max-w-[100vh]'>
 
                 {!! nl2br($post['message']) !!}
 

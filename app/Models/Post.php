@@ -14,6 +14,7 @@ class Post extends Model
         'message',
         'category_id',
         'image',
+        'post_id'
     ];
 
     public function user()

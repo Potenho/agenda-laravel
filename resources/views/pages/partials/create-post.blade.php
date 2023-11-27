@@ -1,15 +1,16 @@
 <div class='flex gap-2'>
-    <div>
+    <div class='flex'>
         <img loading="lazy"
-            class='flex-shrink-0 sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full {{ auth()->user()->pfpColor ? 'bg-[#' . auth()->user()->pfpColor . ']' : 'bg-blue-950' }} rounded-full'
+            class='flex-shrink-0 max-w-[45px] max-h-[45px] {{ auth()->user()->pfpColor ? 'bg-[#' . auth()->user()->pfpColor . ']' : 'bg-blue-950' }} rounded-full'
             width='45px' height='45px' src="{{ asset(auth()->user()->pfp) }}" alt="">
     </div>
-    <div>
-        <form class='flex flex-col gap-2' method="POST" action="{{ route('post.store') }} " enctype="multipart/form-data">
+    <div class='flex w-full'>
+        <form class='flex flex-col gap-2 w-full' method="POST" action="{{ route('post.store') }} " enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="category_id" value="{{ $category->id }} " />
-            <textarea class='resize-none focus:outline-none focus:ring-0' id="message" maxlength='600' name="message" placeholder="O que você está pensando?"
-                rows="1" cols="100" oninput="autoResize(this)"></textarea>
+            <input type="hidden" name="post_id" value="{{ isset($post->id) ? $post->id : null }} " />
+            <textarea class='block resize-none focus:outline-none focus:ring-0 w-[60%] max-w-[100vh]' id="message" maxlength='600' name="message" placeholder="O que você está pensando?"
+                rows="1" oninput="autoResize(this)"></textarea>
             <div id='imageContainer' class='hidden bg-gray-500 rounded-[10px] w-fit'>
                 <div id="cancel-btn" class='absolute'>
                     <i class="fas fa-time">
