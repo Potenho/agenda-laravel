@@ -11,6 +11,6 @@
             disciplina de
             Desenvolvimento de Sistemas Web. Criado usando <b>Laravel 10</b> e <b>Tailwind CSS</b>, o sistema é uma simples
             rede social de comunidades.</p><br>
-        <a class='text-[#87C4FF] hover:underline flex items-center gap-2' href="https://github.com/Potenho/agenda-laravel">Pagina do Github</a>
+        <a class='text-[#87C4FF] hover:underline flex items-center gap-2 w-fit' href="https://github.com/Potenho/agenda-laravel">Pagina do Github</a>
     </div>
 @endsection

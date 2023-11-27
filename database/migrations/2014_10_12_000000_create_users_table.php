@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('pfp')->nullable()->default(config('images.pfp_path').'default.png');
             $table->string('backgroundColor')->default('666666');
-            $table->string('pfpColor')->default('aaaaaa');
+            $table->string('pfpColor')->default('aaaaff');
             $table->rememberToken();
             $table->timestamps();
         });

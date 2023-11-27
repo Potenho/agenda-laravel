@@ -18,7 +18,9 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+Route::get('/documentation', [HomeController::class, 'documentation'])->name('home.documentation');
 
 Route::controller(LoginController::class)->group(function() {
     Route::get('/register', 'register')->name('register.index');

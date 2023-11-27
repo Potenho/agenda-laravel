@@ -44,6 +44,11 @@ class PostController extends Controller
 
         }
 
+        if ($request['post_id'])
+        {
+            return redirect()->route('category.specific',['id' => $request['category_id'], 'post_id' => $request['post_id']]);
+        }
+
         return redirect()->route('category.specific', $request['category_id']);
     }
 

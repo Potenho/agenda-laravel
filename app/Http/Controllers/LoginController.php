@@ -38,9 +38,12 @@ class LoginController extends Controller
             return redirect()->route('register.index')->withErrors(['error' => 'Uma conta com este nome de usuário já existe!']);
         }
 
+        var_dump(array_rand(config('defaultPfpColors')));
+
         User::create([
             'username' => $request->input('username'),
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
+            'pfpColor' => config('defaultPfpColors')[array_rand(config('defaultPfpColors'))],
         ]);
 
         return redirect()->route('login.index')->with(['success' => 'Usuário criado! Por favor, faça o login.']);
@@ -69,13 +72,13 @@ class LoginController extends Controller
 
         Auth::loginUsingId($user->id);
 
-        return redirect()->route('home');
+        return redirect()->route('home.index');
     }
 
     public function destroy()
     {
         Auth::logout();
 
-        return redirect()->route('home');
+        return redirect()->route('home.index');
     }
 }
