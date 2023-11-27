@@ -30,7 +30,7 @@
 
 
                 <button
-                    class='w-fit flex items-center p-2 rounded-full transition-all transform hover:scale-110 like-button hover:bg-[var(--clr-like-hover)] {{ $post->isAuthUserLikedPost() ? 'bg-[var(--clr-like-liked)] unliked' : 'bg-[var(--clr-like-unliked)] liked' }} '
+                    class='w-fit flex fill-red-800 text-red-800 items-center p-2 rounded-full transition-all transform hover:scale-110 like-button hover:bg-[var(--clr-like-hover)] {{ $post->isAuthUserLikedPost() ? 'bg-[var(--clr-like-liked)] unliked' : 'bg-[var(--clr-like-unliked)] liked' }} '
                     data-post-id="{{ $post->id }}">@include('pages.svg-icons.likes')
                     <p class='like-count' data-post-id="{{ $post->id }}">
                         {{ $post->likes->count() }}</p>
