@@ -37,11 +37,11 @@
             <!-- Login -->
             <div class=' hidden md:flex items-center space-x-10'>
                 @if (auth()->check())
-                    <a href="{{ route('config.index') }}" class='flex items-center space-x-2'>
+                    <div class='flex items-center space-x-2'>
                         <p>Logado | <b>{{ auth()->user()->username }}</b></p>
                         <img class='{{ 'bg-[#' . auth()->user()->pfpColor . ']' }} rounded-full relative border-4 border-[#ffffff]'
                             width="50" height="50" src="{{ asset(auth()->user()->pfp) }}" alt="">
-                    </a>
+                    </div>
                 @else
                     <a href="{{ route('login.index') }}"
                         class='{{ request()->route()->getName() != 'login.index'? 'text-[#87C4FF] hover:text-[#AAAAAA]': 'text-[#AAAAAA]' }}'>
@@ -77,9 +77,9 @@
                                 <a href="{{ route('category.index') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-300 border-b-2"
                                     role="menuitem">Comunidades </a>
-                                <a href="{{ route('config.index') }}"
+                                <!--<a href="#"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-300"
-                                    role="menuitem">Configurações</a>
+                                    role="menuitem">Configurações</a>-->
                                 <a href="{{ route('login.destroy') }}"
                                     class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 focus:bg-gray-300"
                                     role="menuitem">Sair</a>

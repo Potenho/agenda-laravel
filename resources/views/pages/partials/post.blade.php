@@ -24,8 +24,8 @@
             @endif
             <div class='flex p-0 m-0 justify-items-stretch relative right-2'>
 
-                <a class="comments-button bg-[var(--clr-comments)] w-fit flex items-center p-2 rounded-full transition-all transform hover:scale-110 hover:bg-[var(--clr-comments-hover)] hover:text-black hover:fill-black {{ $post->comments->count() == 0 ? 'text-gray-400 fill-gray-400' : 'text-black' }}"
-                    href="{{ route('category.specific', ['id' => $category['id'], 'post_id' => $post->id])}}">@include('pages.svg-icons.comments')
+                <a class="comments-button bg-[var(--clr-comments)] w-fit flex items-center p-2 rounded-full transition-all hover:text-[var(--clr-comments-hover)] hover:fill-[var(--clr-comments-hover)] focus:fill-[var(--clr-comments-hover)] focus:text-[var(--clr-comments-hover)] {{ $post->comments->count() == 0 ? 'text-gray-400 fill-gray-400' : 'text-black' }}"
+                    href="{{ route('category.specific', ['id' => $category['id'], 'post_id' => $post->id]) }}">@include('pages.svg-icons.comments')
                     {{ $post->comments->count() }} </a>
 
 

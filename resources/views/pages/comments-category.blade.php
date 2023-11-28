@@ -11,9 +11,11 @@
                 <div class='text-[20px] text-white mx-4'>{{ $category['name'] }}</div>
             </div>
             <div class='bg-white flex flex-col rounded-[10px] p-5 rounded-t-[0px] gap-y-2'>
-                <div><a href="{{ route('category.specific', $category['id']) }}">< Voltar para os posts da comunidade</a></div>
+                <div><a href="{{ route('category.specific', $category['id']) }}">
+                        < Voltar para os posts da comunidade</a>
+                </div>
 
-                <div class='border-b-2'>
+                <div class=''>
                     <div class='flex flex-col pt-2 gap-2 border-t-2'>
                         <div class='flex gap-x-3'>
                             <img loading="lazy"
@@ -39,7 +41,7 @@
                             @endif
                             <div class='flex p-0 m-0 justify-items-stretch relative right-2'>
 
-                                <a class='comments-button bg-[var(--clr-comments)] w-fit flex items-center p-2 rounded-full transition-all transform hover:scale-110 hover:bg-[var(--clr-comments-hover)]'
+                                <a class='comments-button bg-[var(--clr-comments)] w-fit flex items-center p-2 rounded-full transition-all hover:text-[var(--clr-comments-hover)] hover:fill-[var(--clr-comments-hover)] focus:fill-[var(--clr-comments-hover)] focus:text-[var(--clr-comments-hover)]'
                                     href="{{ route('category.specific', ['id' => $category['id'], 'post_id' => $post->id]) }}">@include('pages.svg-icons.comments')
                                     {{ $post->comments->count() }} </a>
 
@@ -50,17 +52,18 @@
                                     <p class='like-count' data-post-id="{{ $post->id }}">
                                         {{ $post->likes->count() }}</p>
                                 </button>
-                                
+
+                                <button id='reply' class='italic hover:underline px-3 transition-all text-[var(--clr-a-button)] hover:text-[var(--clr-a-button-hover)]'>Responder</button>
+
                             </div>
 
                         </div>
-                    </div><br>
+                    </div>
 
                 </div>
-                
 
-                <div class='italic'>Responder {{$post->user->username}}:</div>
-                @include('pages.partials.create-post')
+
+                <div id='replyForm' class='hidden'>@include('pages.partials.create-post')</div>
 
                 @if ($post->comments->count() == 0)
                     <div class='text-[12px] text-gray-400 border-t-2 py-2'>Há nenhum comentário. Seja o primeiro comentar.
@@ -76,5 +79,20 @@
             </div>
         </div>
     </div>
+    <script>
+       
+        $(document).ready(function() {
+            $('#reply').on('click', function() {
+
+                $('#replyForm').toggleClass('hidden');
+
+                if ($('#replyForm').hasClass('hidden')) {
+                    $(this).html('Responder');
+                } else {
+                    $(this).html('Cancelar');
+                }
+            });
+        });
+    </script>
     @include('pages.partials.post-js')
 @endsection

@@ -1,10 +1,11 @@
 <script>
     var classLikeRequest = "bg-[var(--clr-like-request)]";
+    var classLikeRequestHover = "hover:bg-[var(--clr-like-request)]";
     var classLikeLiked = "bg-[var(--clr-like-liked)]";
     var classLikeUnliked = "bg-[var(--clr-like-unliked)]";
 
     var classComments = "bg-[var(--clr-comments)]";
-    var classCommenstRequest = "bg-[var(--clr-comments-request)]";
+    var classCommenstRequest = "bg-[#00000000]"; //bg-[var(--clr-comments-request)]
 
     $(document).ready(function() {
         function handleLikeDislike(postId) {
@@ -13,6 +14,7 @@
             var action = isLiked ? 'like' : 'unlike';
 
             likeButton.addClass(classLikeRequest);
+            likeButton.addClass(classLikeRequestHover);
             likeButton.removeClass(classLikeLiked);
             likeButton.removeClass(classLikeUnliked);
 
@@ -28,6 +30,7 @@
                 success: function(response) {
                     // Lógica para adicionar ou remover a classe ao botão com base na resposta do servidor
                     likeButton.removeClass(classLikeRequest);
+                    likeButton.removeClass(classLikeRequestHover);
 
                     if (response.error === 'no_such_like') {
                         likeButton.removeClass('unliked');
@@ -55,6 +58,7 @@
                 },
                 error: function(xhr, status, error) {
                     likeButton.removeClass(classLikeRequest);
+                    likeButton.removeClass(classLikeRequestHover);
                     // Lógica para lidar com erros na requisição AJAX
                     console.error('Erro na requisição AJAX:', status, error, isLiked ? 'unlike' :
                         'like');
